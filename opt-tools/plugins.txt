@@ -1,0 +1,16 @@
+List of cluster plugins where rabbitmq with management plugin image is used:
+
+Flag: classic_mirrored_queue_version, state: enabled
+Flag: direct_exchange_routing_v2, state: enabled
+Flag: drop_unroutable_metric, state: enabled
+Flag: empty_basic_get_metric, state: enabled
+Flag: feature_flags_v2, state: enabled
+Flag: implicit_default_bindings, state: enabled
+Flag: listener_records_in_ets, state: enabled
+Flag: maintenance_mode_status, state: enabled
+Flag: quorum_queue, state: enabled
+Flag: stream_queue, state: enabled
+Flag: stream_single_active_consumer, state: enabled
+Flag: tracking_records_in_ets, state: enabled
+Flag: user_limits, state: enabled
+Flag: virtual_host_metadata, state: enabled

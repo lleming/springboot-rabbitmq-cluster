@@ -1,0 +1,57 @@
+version: '3.8'
+
+networks:
+  mq-net:
+    driver: bridge
+
+services:
+  rabbitmq-node1:
+    labels:
+      - node=rnode1
+    container_name: rabbitmq-node1
+    hostname: rabbitmq-node1
+    image: rabbitmq:3.8.27-management
+    volumes:
+      - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+      - /var/opt/rabbitmq/rnode1/logs/:/var/log/rabbitmq/
+      - /var/opt/rabbitmq/rnode1/mnesia/:/var/lib/rabbitmq/mnesia/
+    networks:
+      - mq-net
+    ports:
+      - "9000:5672"
+      - "25672:15672"
+    environment:
+      - RABBITMQ_ERLANG_COOKIE="V2HA7HGS#MA3JSPAMK"
+
+  rabbitmq-node2:
+    container_name: rabbitmq-node2
+    hostname: rabbitmq-node2
+    image: rabbitmq:3.8.27-management
+    volumes:
+      - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+      - /var/opt/rabbitmq/rnode2/logs/:/var/log/rabbitmq/
+      - /var/opt/rabbitmq/rnode2/mnesia/:/var/lib/rabbitmq/mnesia/
+    networks:
+      - mq-net
+    ports:
+      - "9001:5672"
+      - "25673:15672"
+    environment:
+      - RABBITMQ_ERLANG_COOKIE="V2HA7HGS#MA3JSPAMK"
+
+  rabbitmq-node3:
+    container_name: rabbitmq-node3
+    hostname: rabbitmq-node3
+    image: rabbitmq:3.8.27-management
+    volumes:
+      - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+      - /var/opt/rabbitmq/rnode3/logs/:/var/log/rabbitmq/
+      - /var/opt/rabbitmq/rnode3/mnesia/:/var/lib/rabbitmq/mnesia/
+    networks:
+      - mq-net
+    ports:
+      - "9002:5672"
+      - "25674:15672"
+    environment:
+      - RABBITMQ_ERLANG_COOKIE="V2HA7HGS#MA3JSPAMK"
+

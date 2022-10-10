@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq-cluster-service
+  namespace: rabbitmq-ns
+spec:
+  selector:
+    app: rabbitmq-cluster-service
+  ports:
+  - port: 7000
+    targetPort: 5672
+

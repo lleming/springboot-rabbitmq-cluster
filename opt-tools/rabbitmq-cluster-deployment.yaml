@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq-cluster-deployment
+  namespace: rabbitmq-ns
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rabbitmq-cluster-deployment
+  template:
+    metadata:
+      labels:
+        app: rabbitmq-cluster-deployment
+    spec:
+      containers:
+      - name: rabbimq-node
+        image: rabbitmq:management
+        ports:
+        - containerPort: 5672
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+
